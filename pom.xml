@@ -8,6 +8,7 @@
     <java.version>1.8</java.version>
     <junit.version>4.12</junit.version>
     <mockito.version>1.10.19</mockito.version>
+    <rest-assured.version>3.0.1</rest-assured.version>
     <jersey-container.version>2.23.2</jersey-container.version>
     <hibernate.version>5.2.3.Final</hibernate.version>
     <h2.version>1.4.192</h2.version>
@@ -32,6 +33,13 @@
       <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${rest-assured.version}</version>
+      <scope>test</scope>
+    </dependency>
+
 
     <dependency>
       <groupId>org.glassfish.jersey.containers</groupId>
@@ -104,6 +112,7 @@
         <configuration>
           <excludes>
             <exclude>**/*ITest.java</exclude>
+            <exclude>**/*RestTest.java</exclude>
           </excludes>
         </configuration>
         <executions>
@@ -119,6 +128,7 @@
               </excludes>
               <includes>
                 <include>**/*ITest.java</include>
+                <include>**/*TestSuite.java</include>
               </includes>
             </configuration>
           </execution>
