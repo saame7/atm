@@ -8,6 +8,7 @@ import ca.ulaval.glo4002.atm.application.banking.BankingService;
 import ca.ulaval.glo4002.atm.application.jpa.EntityManagerFactoryProvider;
 import ca.ulaval.glo4002.atm.application.jpa.EntityManagerProvider;
 import ca.ulaval.glo4002.atm.domain.accounts.AccountRepository;
+import ca.ulaval.glo4002.atm.domain.accounts.StandardAccount;
 import ca.ulaval.glo4002.atm.domain.dispensers.CashDispenser;
 import ca.ulaval.glo4002.atm.infrastructure.dispensers.FakeCashDispenser;
 import ca.ulaval.glo4002.atm.infrastructure.persistence.HibernateAccountRepository;
@@ -28,9 +29,12 @@ public class DevContext implements Context {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityManagerProvider.setEntityManager(entityManager);
 
-        // entityManager.getTransaction().begin();
-        // TODO : remplir la BD
-        // entityManager.getTransaction().commit();
+        AccountRepository accountRepository = new HibernateAccountRepository();
+
+        entityManager.getTransaction().begin();
+        accountRepository.persist(new StandardAccount(123, 1000));
+        accountRepository.persist(new StandardAccount(456, 1));
+        entityManager.getTransaction().commit();
 
         EntityManagerProvider.clearEntityManager();
         entityManager.close();
