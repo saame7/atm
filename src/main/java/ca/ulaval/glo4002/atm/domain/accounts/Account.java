@@ -20,11 +20,7 @@ public abstract class Account {
 
     @Column(name = "accountNumber")
     private int accountNumber;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> cfc03e9... Initial working code
     @Column
     protected double balance;
 
@@ -39,10 +35,7 @@ public abstract class Account {
 
     public abstract TransactionLog debit(double amount);
 
-<<<<<<< HEAD
     public int getAccountNumber() {
         return accountNumber;
     }
-=======
->>>>>>> cfc03e9... Initial working code
 }
