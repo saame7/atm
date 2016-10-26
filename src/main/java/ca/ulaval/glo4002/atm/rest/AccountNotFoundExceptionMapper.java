@@ -1,0 +1,16 @@
+package ca.ulaval.glo4002.atm.rest;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.ext.ExceptionMapper;
+
+import ca.ulaval.glo4002.atm.domain.accounts.AccountNotFoundException;
+
+public class AccountNotFoundExceptionMapper implements ExceptionMapper<AccountNotFoundException> {
+
+    @Override
+    public Response toResponse(AccountNotFoundException exception) {
+        return Response.status(Status.NOT_FOUND).build();
+    }
+
+}
